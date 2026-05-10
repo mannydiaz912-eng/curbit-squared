@@ -1,0 +1,166 @@
+---
+---
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap">
+        <img src="/images/repair-work.jpg" alt="Josh repairing a lawn mower engine" class="about-img" />
+        <div class="about-badge">
+          <span class="badge-number">100%</span>
+          <span class="badge-label">No Fix, No Pay Guarantee</span>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">A FATHER &amp; SON<br/> <span>TEAM WITH A MISSION</span></h2>
+        <p>
+          Curb-It<sup>2</sup> started with a simple idea: too many perfectly fixable lawn mowers
+          end up at the curb, destined for the landfill, just because something small went wrong.
+          We decided to do something about it.
+        </p>
+        <p style="margin-top:1rem;">
+          We're a local East Markham father and son team. Our son Josh discovered a knack for small
+          engine repair early on, and what started as rescuing discarded mowers off the curb became
+          a real business. Now we apply that same passion to keeping <em>your</em> mower running right.
+        </p>
+        <p style="margin-top:1rem;">
+          We offer professional-grade lawn mower repair at honest prices — weeknights and weekends,
+          by appointment. And if we can't fix it? <strong>You pay nothing.</strong>
+        </p>
+
+        <div class="about-values">
+          <div class="value">
+            <span class="value-icon">♻️</span>
+            <div>
+              <strong>Save the Planet</strong>
+              <p>Repairable equipment stays out of landfills.</p>
+            </div>
+          </div>
+          <div class="value">
+            <span class="value-icon">💰</span>
+            <div>
+              <strong>Save Your Money</strong>
+              <p>Repair beats replacement every time.</p>
+            </div>
+          </div>
+          <div class="value">
+            <span class="value-icon">🏆</span>
+            <div>
+              <strong>Guaranteed Work</strong>
+              <p>If we don't fix it, you don't pay. Period.</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="/contact/" class="btn btn-green" style="margin-top:2rem;">Book Your Repair →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: white;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-image-wrap {
+    position: relative;
+  }
+
+  .about-img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    height: 520px;
+    box-shadow: var(--shadow);
+  }
+
+  .about-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background: var(--orange);
+    color: white;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(244,124,32,0.4);
+  }
+
+  .badge-number {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .badge-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    max-width: 100px;
+    line-height: 1.3;
+    margin-top: 0.25rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.75;
+  }
+
+  .about-values {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .value {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .value-icon {
+    font-size: 1.75rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .value strong {
+    font-weight: 800;
+    display: block;
+    font-size: 1rem;
+    color: var(--green);
+  }
+
+  .value p {
+    font-size: 0.88rem !important;
+    margin: 0 !important;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .about-img { height: 320px; }
+
+    .about-badge {
+      bottom: 1rem;
+      right: 1rem;
+    }
+  }
+</style>

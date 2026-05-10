@@ -1,0 +1,355 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  currentPath?: string;
+}
+
+const {
+  title = "Curb-It² | Gas-Powered Lawn Equipment Repair in Markham, ON",
+  description = "Father & son lawn mower repair in East Markham, ON. Tune-ups, blade sharpening, carburetor cleaning & more. If we can't fix it, no charge.",
+  currentPath = "/",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://curbitsquared.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://curbitsquared.com/" />
+    <meta property="og:image" content="https://curbitsquared.com/images/hero-mowers.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style is:global>
+      :root {
+        --green:       #0B6B3A;
+        --orange:      #F47C20;
+        --black:       #1F1F1F;
+        --bg:          #F7F4EC;
+        --grass:       #7FBF3F;
+        --green-light: #0d7d46;
+        --white:       #ffffff;
+        --shadow:      0 4px 24px rgba(11,107,58,0.12);
+      }
+
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: 'Nunito', sans-serif;
+        background: var(--bg);
+        color: var(--black);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: 'Bebas Neue', sans-serif;
+        letter-spacing: 0.04em;
+        line-height: 1.1;
+      }
+
+      a { color: inherit; text-decoration: none; }
+
+      img { max-width: 100%; display: block; }
+
+      .container {
+        width: min(1160px, 100% - 2rem);
+        margin-inline: auto;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 2rem;
+        border-radius: 4px;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.2rem;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.15s;
+        border: none;
+        text-decoration: none;
+      }
+
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
+      .btn-orange {
+        background: var(--orange);
+        color: var(--white);
+      }
+
+      .btn-green {
+        background: var(--green);
+        color: var(--white);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--white);
+        border: 2px solid var(--white);
+      }
+
+      .btn-outline:hover { background: var(--white); color: var(--green); }
+
+      section { padding: 5rem 0; }
+
+      .section-label {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+        color: var(--orange);
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+
+      .section-title {
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        color: var(--green);
+        margin-bottom: 1rem;
+      }
+
+      .section-title span { color: var(--orange); }
+
+      /* Nav */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--green);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        gap: 1rem;
+      }
+
+      .nav-logo img {
+        height: 52px;
+        width: auto;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: rgba(255,255,255,0.85);
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover { color: var(--orange); }
+      .nav-links a.active { color: var(--orange); border-bottom: 2px solid var(--orange); padding-bottom: 2px; }
+
+      .nav-cta { flex-shrink: 0; }
+
+      .hamburger { display: none; }
+
+      @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          cursor: pointer;
+          padding: 4px;
+          background: none;
+          border: none;
+        }
+        .hamburger span {
+          display: block;
+          width: 24px;
+          height: 2px;
+          background: white;
+          border-radius: 2px;
+        }
+        .nav-cta .btn { padding: 0.6rem 1.2rem; font-size: 1rem; }
+      }
+
+      /* Footer */
+      footer {
+        background: var(--black);
+        color: rgba(255,255,255,0.7);
+        padding: 3rem 0 1.5rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-brand img {
+        height: 60px;
+        filter: none;
+        margin-bottom: 1rem;
+      }
+
+      .footer-brand p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        max-width: 280px;
+      }
+
+      .footer-col h4 {
+        color: var(--orange);
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-col ul { list-style: none; }
+
+      .footer-col ul li {
+        padding: 0.3rem 0;
+        font-size: 0.9rem;
+      }
+
+      .footer-col ul li a { transition: color 0.2s; }
+      .footer-col ul li a:hover { color: var(--orange); }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .footer-bottom a { color: var(--orange); }
+
+      @media (max-width: 768px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        .footer-bottom { flex-direction: column; text-align: center; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="container">
+        <div class="nav-inner">
+          <a href="/" class="nav-logo">
+            <img src="/images/logo.png" alt="Curb-It Squared Logo" />
+          </a>
+          <ul class="nav-links">
+            <li><a href="/services/" class={currentPath === '/services/' ? 'active' : ''}>Services</a></li>
+            <li><a href="/about/" class={currentPath === '/about/' ? 'active' : ''}>About</a></li>
+            <li><a href="/gallery/" class={currentPath === '/gallery/' ? 'active' : ''}>Gallery</a></li>
+            <li><a href="/contact/" class={currentPath === '/contact/' ? 'active' : ''}>Contact</a></li>
+          </ul>
+          <a href="https://wa.me/14372308484" target="_blank" rel="noopener" class="btn btn-orange nav-cta">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:1rem;height:1rem;flex-shrink:0;" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            437-230-8484
+          </a>
+          <button class="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <slot />
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="/images/logo.png" alt="Curb-It Squared" />
+            <p>Father &amp; son small engine repair · Markham, ON. We fix it, or you don't pay a cent.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="/services/">Tune-Up &amp; Maintenance</a></li>
+              <li><a href="/services/">Blade Sharpening</a></li>
+              <li><a href="/services/">Carburetor Cleaning</a></li>
+              <li><a href="/services/">Oil Changes</a></li>
+              <li><a href="/services/">Spark Plug Service</a></li>
+              <li><a href="/services/">Fuel System Cleaning</a></li>
+              <li><a href="/services/">Parts Replacement</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="https://wa.me/14372308484" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:0.85rem;height:0.85rem;display:inline;vertical-align:middle;margin-right:4px;" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                437-230-8484
+              </a></li>
+              <li><a href="mailto:curbitsquared@gmail.com">✉ curbitsquared@gmail.com</a></li>
+              <li>📍 East Markham, ON</li>
+              <li>🕐 Weeknights &amp; Weekends</li>
+              <li>By Appointment Only</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 Curb-It<sup>2</sup>. All rights reserved.</span>
+          <span>Built with ❤️ in Markham, ON · <a href="mailto:curbitsquared@gmail.com">curbitsquared@gmail.com</a></span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile nav toggle
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      hamburger?.addEventListener('click', () => {
+        const isOpen = navLinks?.classList.toggle('open');
+        if (navLinks) {
+          (navLinks as HTMLElement).style.display = isOpen ? 'flex' : 'none';
+          if (isOpen) {
+            (navLinks as HTMLElement).style.flexDirection = 'column';
+            (navLinks as HTMLElement).style.position = 'absolute';
+            (navLinks as HTMLElement).style.top = '100%';
+            (navLinks as HTMLElement).style.left = '0';
+            (navLinks as HTMLElement).style.right = '0';
+            (navLinks as HTMLElement).style.background = '#0B6B3A';
+            (navLinks as HTMLElement).style.padding = '1rem 1.5rem';
+            (navLinks as HTMLElement).style.zIndex = '99';
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

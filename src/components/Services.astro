@@ -1,0 +1,216 @@
+---
+const services = [
+  {
+    icon: "🔧",
+    title: "Tune-Up & Maintenance",
+    desc: "Full inspection, seasonal tune-ups, and preventative maintenance to keep your mower running strong all season.",
+    items: ["Full service inspection", "Seasonal tune-ups", "Preventative maintenance"],
+  },
+  {
+    icon: "💨",
+    title: "Air Filter Services",
+    desc: "Clean or replace your air filter to ensure proper airflow and engine performance.",
+    items: ["Clean dirt & debris", "Air filter replacement"],
+  },
+  {
+    icon: "⚡",
+    title: "Spark Plug Services",
+    desc: "Diagnose ignition issues and restore reliable starts with spark plug cleaning or replacement.",
+    items: ["Spark plug cleaning", "Spark plug replacement"],
+  },
+  {
+    icon: "🛢️",
+    title: "Oil Services",
+    desc: "Protect your engine with proper oil levels and fresh oil changes.",
+    items: ["Check & top off oil level", "Full oil changes"],
+  },
+  {
+    icon: "⛽",
+    title: "Fuel System Services",
+    desc: "Remove stale fuel buildup and restore clean fuel delivery for reliable starting.",
+    items: ["Drain & clean fuel tank", "Fuel system cleaning"],
+  },
+  {
+    icon: "🔪",
+    title: "Blade Services",
+    desc: "Sharp, balanced blades mean cleaner cuts and a healthier lawn.",
+    items: ["Sharpen & balance blade", "Mower blade replacement"],
+  },
+  {
+    icon: "⚙️",
+    title: "Carburetor Services",
+    desc: "Restore fuel mixture and engine performance with professional carb cleaning.",
+    items: ["Carburetor cleaning", "Carburetor sonic deep cleaning"],
+    title: "Parts Replacement",
+    desc: "Worn or broken parts replaced with quality components to extend your mower's life.",
+    items: ["Worn/damaged parts replacement", "Additional repair parts installation"],
+  },
+];
+---
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">GAS MOWER <span>REPAIR SERVICES</span></h2>
+      <p class="services-sub">
+        We handle everything your gas-powered mower needs, from blade sharpening
+        to full engine services. All work done in East Markham.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((s) => (
+        <div class="service-card">
+          <div class="service-icon">{s.icon}</div>
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+          <ul>
+            {s.items.map((item) => (
+              <li>✓ {item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Pickup Banner -->
+    <div class="pickup-banner">
+      <div class="pickup-content">
+        <span class="pickup-icon">🚚</span>
+        <div>
+          <strong>Pick-Up &amp; Delivery Available</strong>
+          <p>Don't haul it yourself — we'll come to you! Pick-up and delivery service available in East Markham for an additional charge.</p>
+        </div>
+      </div>
+      <a href="/contact/" class="btn btn-orange">Book Pick-Up →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    background: var(--bg);
+  }
+
+  .services-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 3.5rem;
+  }
+
+  .services-sub {
+    color: #555;
+    font-size: 1.05rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.75rem;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover {
+    border-color: var(--green);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(11,107,58,0.12);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .service-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .service-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .service-card ul li {
+    font-size: 0.85rem;
+    color: var(--black);
+    font-weight: 600;
+  }
+
+  /* Pickup Banner */
+  .pickup-banner {
+    background: var(--green);
+    border-radius: 8px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .pickup-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    color: white;
+  }
+
+  .pickup-icon { font-size: 2rem; flex-shrink: 0; }
+
+  .pickup-content strong {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .pickup-content p {
+    font-size: 0.9rem;
+    opacity: 0.88;
+    max-width: 480px;
+  }
+
+  @media (max-width: 600px) {
+    .pickup-banner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

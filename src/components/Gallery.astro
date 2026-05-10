@@ -1,0 +1,174 @@
+---
+---
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <p class="section-label">Real Work. Real Results.</p>
+      <h2 class="section-title">FROM THE <span>DRIVEWAY SHOP</span></h2>
+      <p class="gallery-sub">
+        Every mower tells a story. Here's some of the work we've rescued, repaired, and returned to life.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item gallery-item--tall">
+        <img src="/images/repair-work.jpg" alt="Josh repairing a Lawn-Boy mower engine on a work table" loading="lazy" />
+        <div class="gallery-caption">Engine deep-dive on a Lawn-Boy — stripped down and rebuilt</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/hero-mowers.jpg" alt="Josh with three rescued mowers — your trash is my treasure" loading="lazy" />
+        <div class="gallery-caption">"Your trash is my treasure" — three curb rescues in one day</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/inventory.jpg" alt="Full inventory of mowers awaiting repair on the driveway" loading="lazy" />
+        <div class="gallery-caption">A full day's work — all brought back from the brink</div>
+      </div>
+    </div>
+
+    <!-- Trash to Treasure Banner -->
+    <div class="trash-banner">
+      <div class="trash-text">
+        <h3>YOUR TRASH IS OUR <span>TREASURE</span></h3>
+        <p>
+          See a lawn mower at the curb? So do we. Many discarded mowers need a tune-up,
+          a new spark plug, or a cleaned carburetor to run like new again. We rescue them,
+          restore them, and resell them, keeping working machines out of landfills.
+        </p>
+      </div>
+      <div class="trash-stat">
+        <span class="stat-num">♻️</span>
+        <span class="stat-label">Mowers Saved from Landfills</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    background: var(--black);
+    color: white;
+    padding-bottom: 6rem;
+  }
+
+  .gallery-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+
+  .gallery-header .section-title { color: white; }
+
+  .gallery-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .gallery-item--tall {
+    grid-row: span 2;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 240px;
+    transition: transform 0.4s;
+    display: block;
+  }
+
+  .gallery-item--tall img { min-height: 500px; }
+
+  .gallery-item:hover img { transform: scale(1.04); }
+
+  .gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+  }
+
+  .gallery-item:hover .gallery-caption { transform: translateY(0); }
+
+  /* Trash Banner */
+  .trash-banner {
+    background: var(--green);
+    border-radius: 8px;
+    padding: 2.5rem;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .trash-text { flex: 1; min-width: 240px; }
+
+  .trash-text h3 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+
+  .trash-text h3 span { color: var(--orange); }
+
+  .trash-text p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  .trash-stat {
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .stat-num {
+    display: block;
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    color: white;
+    max-width: 140px;
+    line-height: 1.3;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-item--tall { grid-row: span 1; }
+    .gallery-item--tall img, .gallery-item img { min-height: 260px; }
+    .gallery-caption { transform: translateY(0); }
+    .trash-banner { flex-direction: column; }
+  }
+</style>

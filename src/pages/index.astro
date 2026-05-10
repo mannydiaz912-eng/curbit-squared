@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Reviews from '../components/Reviews.astro';
+---
+
+<Layout
+  title="Curb-It² | Gas-Powered Lawn Equipment Repair in Markham, ON"
+  description="Father & son lawn mower repair in East Markham, ON. Tune-ups, blade sharpening, carburetor cleaning & more. If we can't fix it, no charge."
+  currentPath="/"
+>
+  <Hero />
+
+  <!-- SERVICES TEASER -->
+  <section class="home-services">
+    <div class="container">
+      <p class="section-label">What We Fix</p>
+      <h2 class="section-title">GAS MOWER <span>REPAIR SERVICES</span></h2>
+      <p class="section-sub">From a quick blade sharpening to a full engine rebuild — we handle everything your gas-powered mower needs, at honest prices.</p>
+      <div class="services-teaser-grid">
+        {[
+          { icon: "🔧", title: "Tune-Up & Maintenance" },
+          { icon: "💨", title: "Air Filter Services" },
+          { icon: "⚡", title: "Spark Plug Services" },
+          { icon: "🛢️", title: "Oil Services" },
+          { icon: "⛽", title: "Fuel System Services" },
+          { icon: "🔪", title: "Blade Sharpening" },
+          { icon: "⚙️", title: "Carburetor Services" },
+          { icon: "🔩", title: "Parts Replacement" },
+        ].map(s => (
+          <div class="teaser-chip"><span>{s.icon}</span>{s.title}</div>
+        ))}
+      </div>
+      <div class="teaser-cta">
+        <a href="/services/" class="btn btn-green">View All Services →</a>
+        <p class="pickup-note">🚚 Pick-up &amp; delivery available in East Markham</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT TEASER -->
+  <section class="home-about">
+    <div class="container home-about-grid">
+      <div class="home-about-img">
+        <img src="/images/repair-work.jpg" alt="Josh repairing a lawn mower engine" />
+        <div class="no-fix-badge">
+          <span class="badge-num">100%</span>
+          <span class="badge-lbl">No Fix · No Pay</span>
+        </div>
+      </div>
+      <div class="home-about-text">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">A FATHER &amp; SON<br/><span>TEAM WITH A MISSION</span></h2>
+        <p>We started Curb-It<sup>2</sup> because too many perfectly fixable lawn mowers end up at the curb just because something small went wrong. Our son Josh discovered a knack for small engine repair — and what started as rescuing curb-side mowers became a real business.</p>
+        <div class="home-values">
+          <div class="home-value">♻️ <span>Keeping repairable equipment out of landfills</span></div>
+          <div class="home-value">💰 <span>Repair beats replacement every time</span></div>
+          <div class="home-value">🏆 <span>If we don't fix it, you don't pay. Period.</span></div>
+        </div>
+        <a href="/about/" class="btn btn-green">Our Full Story →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY TEASER -->
+  <Reviews />
+  <section class="home-gallery">
+    <div class="container">
+      <p class="section-label" style="color:rgba(255,255,255,0.6);">Real Work. Real Results.</p>
+      <h2 class="section-title" style="color:white;">FROM THE <span>DRIVEWAY SHOP</span></h2>
+      <div class="gallery-teaser-grid">
+        <img src="/images/hero-mowers.jpg" alt="Three rescued mowers ready for repair" />
+        <img src="/images/inventory.jpg" alt="Full inventory of mowers awaiting service" />
+      </div>
+      <div style="text-align:center;margin-top:2rem;">
+        <a href="/gallery/" class="btn btn-orange">See Our Work →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div class="container cta-inner">
+      <p>Ready to get your equipment running like new?</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/14372308484" target="_blank" rel="noopener" class="btn btn-orange">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:1rem;height:1rem;flex-shrink:0;" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp / Text Us
+        </a>
+        <a href="/contact/" class="btn btn-outline">Contact Form ✉</a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .home-services { background: var(--bg); padding: 5rem 0; }
+  .section-sub { color: #555; font-size: 1.05rem; max-width: 580px; margin: 0 auto 2.5rem; text-align: center; }
+  .home-services .section-label, .home-services .section-title { text-align: center; }
+  .services-teaser-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 2.5rem; }
+  .teaser-chip { display: flex; align-items: center; gap: 0.5rem; background: white; border: 2px solid var(--green); color: var(--green); font-weight: 700; font-size: 0.9rem; padding: 0.5rem 1.1rem; border-radius: 100px; transition: background 0.2s, color 0.2s; }
+  .teaser-chip:hover { background: var(--green); color: white; }
+  .teaser-cta { text-align: center; }
+  .pickup-note { margin-top: 1rem; color: #666; font-size: 0.9rem; font-weight: 600; }
+
+  .home-about { background: white; padding: 5rem 0; }
+  .home-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .home-about-img { position: relative; }
+  .home-about-img img { width: 100%; height: 460px; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow); }
+  .no-fix-badge { position: absolute; bottom: -1.2rem; right: -1.2rem; background: var(--orange); color: white; border-radius: 6px; padding: 0.9rem 1.1rem; text-align: center; box-shadow: 0 4px 20px rgba(244,124,32,0.35); }
+  .badge-num { display: block; font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; line-height: 1; }
+  .badge-lbl { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; max-width: 90px; line-height: 1.3; margin-top: 0.2rem; }
+  .home-about-text p { color: #444; line-height: 1.75; margin-bottom: 1.25rem; }
+  .home-values { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.75rem; }
+  .home-value { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.95rem; font-weight: 600; color: var(--black); }
+  .home-value span { color: #444; font-weight: 400; }
+
+  .home-gallery { background: var(--black); color: white; padding: 5rem 0; }
+  .home-gallery .section-title span { color: var(--orange); }
+  .gallery-teaser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  .gallery-teaser-grid img { width: 100%; height: 280px; object-fit: cover; border-radius: 6px; transition: transform 0.3s; }
+  .gallery-teaser-grid img:hover { transform: scale(1.02); }
+
+  .cta-strip { background: var(--orange); padding: 2rem 0; }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+  .cta-strip p { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: white; letter-spacing: 0.04em; }
+  .cta-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .cta-strip .btn-orange { background: white; color: var(--orange); }
+  .cta-strip .btn-outline { border-color: white; color: white; }
+  .cta-strip .btn-outline:hover { background: white; color: var(--orange); }
+
+  @media (max-width: 900px) {
+    .home-about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .home-about-img img { height: 300px; }
+    .no-fix-badge { bottom: 1rem; right: 1rem; }
+  }
+  @media (max-width: 600px) {
+    .gallery-teaser-grid { grid-template-columns: 1fr; }
+    .cta-inner { flex-direction: column; text-align: center; }
+    .cta-actions { justify-content: center; }
+  }
+</style>
